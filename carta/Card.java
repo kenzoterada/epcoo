@@ -23,7 +23,6 @@ public class Card {
         this.name = name;
         this.color = color;
         this.positions = positions;
-
     }
 
     /**
@@ -63,6 +62,41 @@ public class Card {
      * @return Vetor de cartas com todas as cartas do jogo
      */
     public static Card[] createCards() {
+        /*
+        As cartas que devem ser implementadas são as seguintes:
+        Tiger (Azul)
+        Dragon(Vermelha)
+        Frog(Vermelho)
+        Rabbit(Azul)
+        Crab(Azul)
+        Elephant(Vermelho)
+        Goose(Azul)
+        Rooster(Vermelho)
+        
+        As posições que serão feitas com new Position respeitam as coordenadas que são
+        passadas no enunciado do EP.
+         */
+
+         Card[] cartas = {
+            new Card("TIGER", Color.BLUE, new Position[] {new Position(-2, 0), new Position(1, 0)}),
+
+            new Card("DRAGON", Color.RED, new Position[]{new Position(-1, -2), new Position(2,1),
+                new Position(1,-1), new Position(1,1)}),
+
+            new Card("FROG", Color.RED, new Position[]{new Position(1,1), }),
+
+            new Card("RABBIT", Color.BLUE, new Position[]{}),
+
+            new Card("CRAB", Color.BLUE, new Position[]{}),
+
+            new Card("ELEPHANT", Color.RED, new Position[]{}),
+
+            new Card("GOOSE", Color.BLUE, new Position[]{}),
+
+            new Card("ROOSTER", Color.RED, new Position[]{})
+            
+
+         };
         return null;
     }
 }
