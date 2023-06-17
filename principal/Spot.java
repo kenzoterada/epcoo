@@ -1,9 +1,18 @@
+package principal;
+
+import carta.Piece;
 import excecao.IllegalMovementException;
+import posicao.Color;
+import posicao.Position;
 
 /**
  * Classe contendo ações e informações sobre cada espaço (quadrado) no tabuleiro
  */
 public class Spot {
+    private Piece piece;
+    private Position pos;
+    private Color color;
+
     /**
      * Construtor para espaços com peça e com cor
      * 
@@ -12,7 +21,9 @@ public class Spot {
      * @param color Cor do espaço no tabuleiro (Templo)
      */
     public Spot(Piece piece, Position pos, Color color) {
-
+        this.pos = pos;
+        this.color = color;
+        this.piece = piece;
     }
 
     /**
@@ -22,7 +33,8 @@ public class Spot {
      * @param pos   Posição do espaço no tabuleiro
      */
     public Spot(Piece piece, Position pos) {
-
+        this.piece = piece;
+        this.pos = pos;
     }
 
     /**
@@ -31,7 +43,7 @@ public class Spot {
      * @param pos Posição do espaço no tabuleiro
      */
     public Spot(Position pos) {
-
+        this.pos = pos;
     }
 
     /**
@@ -40,7 +52,7 @@ public class Spot {
      * @return Objeto Position contendo a posição (coordenadas) do espaço
      */
     public Position getPosition() {
-        return null;
+        return this.pos;
     }
 
     /**
@@ -49,7 +61,7 @@ public class Spot {
      * @return Objeto Piece caso tenha uma peça ou null caso o espaço esteja vazio
      */
     public Piece getPiece() {
-        return null;
+        return this.piece;
     }
 
     /**
@@ -58,18 +70,8 @@ public class Spot {
      * @return Enum Color com a cor do espaço. Caso o espaço não tenha cor, o valor
      *         do enum será NONE
      */
-    Color getColor() {
-        return null;
-    }
-
-    /**
-     * Método que verifica se a posição é válida no tabuleiro
-     * 
-     * @return Um booleano que indica se o objeto representa uma posição válida no
-     *         tabuleiro
-     */
-    public boolean isValid() {
-        return false;
+    public Color getColor() {
+        return this.color;
     }
 
     /**
@@ -80,13 +82,20 @@ public class Spot {
      *                                     peça da mesma cor
      */
     protected void occupySpot(Piece piece) throws IllegalMovementException {
-
+        Piece p = this.piece;
+        if (p != null && p.getColor() == piece.getColor()) {
+            throw new IllegalMovementException("O espaço já está ocupado por uma peça da mesma cor");
+        }
+        if (p != null) {
+            p = piece;
+        }
     }
 
     /**
      * Método que "libera" o espaço atual, ou seja, deixa-o vazio
      */
     protected void releaseSpot() {
+        this.piece = null;
 
     }
 }
